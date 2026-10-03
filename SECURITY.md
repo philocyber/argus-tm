@@ -1,11 +1,11 @@
-# Seguridad
+# Security
 
-El alcance soportado es una PoC local de un único operador, con interfaz enlazada a loopback. No exponer directamente a Internet ni a una red compartida. El modo de servicio existente requiere evaluación adicional antes de usarse como plataforma multiusuario; ver [decisiones pendientes](docs/security/deferred-decisions.md).
+The supported scope is a local, single-operator PoC with an interface bound to the loopback address. Do not expose it directly to the Internet or a shared network. The current service mode requires further evaluation before being used as a multi-user platform; see [deferred decisions](docs/security/deferred-decisions.md).
 
-Las credenciales se configuran mediante el entorno o la interfaz local. El archivo .env.local, los documentos de knowledge_base/ y los proyectos locales contienen información privada y no forman parte de la distribución. Usar fuentes aprobadas para RAG. Los proveedores externos reciben el contexto seleccionado para cada análisis; verificar su autorización interna antes de habilitarlos.
+Credentials are configured via the environment or the local interface. The `.env.local` file, documents in `knowledge_base/`, and local projects contain private information and are not part of the distribution. Use approved sources for RAG. External providers receive the selected context for each analysis; verify internal authorization before enabling them.
 
-Las mutaciones locales requieren mismo origen y loopback. En modo PostgreSQL, los tokens de análisis no permiten modificar credenciales ni el corpus global. Estas restricciones no sustituyen SSO, autorización por recurso ni aislamiento multiusuario.
+Local mutations require the same-origin policy and loopback access. In PostgreSQL mode, analysis tokens do not allow modification of credentials or the global corpus. These restrictions do not replace SSO, resource-level authorization, or multi-user isolation.
 
-No incluir secretos ni documentos privados al reportar vulnerabilidades en issues abiertos. Ante una exposición, revocar la credencial afectada y seguir el proceso de respuesta a incidentes de la organización que controla los datos.
+Do not include secrets or private documents when reporting vulnerabilities in open issues. In the event of an exposure, revoke the affected credential and follow the incident response process of the organization controlling the data.
 
-La integración continua ejecuta pruebas, auditoría de dependencias y un escaneo de secretos independiente. Una auditoría sin hallazgos no certifica la seguridad del producto.
+Continuous integration runs tests, dependency audits, and an independent secrets scan. An audit with no findings does not certify the product's security.
